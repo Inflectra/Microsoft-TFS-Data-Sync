@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorkItem TimeZone="Eastern Standard Time" Offset="-05:00:00" xmlns="">
+	<Classification>
+		<System.IterationPath>\Library Information System</System.IterationPath>
+		<System.Id>16</System.Id>
+		<System.WorkItemType>Bug</System.WorkItemType>
+		<System.Title>Sample Work ITem</System.Title>
+		<System.AreaPath>\Library Information System</System.AreaPath>
+	</Classification>
+	<RevisionFields>
+		<Field ReferenceName="System.AssignedTo" Name="Assigned To" Type="String">
+			<Value>Administrator</Value>
+		</Field>
+		<Field ReferenceName="System.State" Name="State" Type="String">
+			<Value>Active</Value>
+		</Field>
+		<Field ReferenceName="System.Reason" Name="Reason" Type="String">
+			<Value>New</Value>
+		</Field>
+		<Field ReferenceName="System.ChangedBy" Name="Changed By" Type="String">
+			<Value>Administrator</Value>
+		</Field>
+		<Field ReferenceName="System.ChangedDate" Name="Changed Date" Type="DateTime">
+			<Value>12/28/2007 7:35:58 AM</Value>
+		</Field>
+		<Field ReferenceName="System.CreatedBy" Name="Created By" Type="String">
+			<Value>Administrator</Value>
+		</Field>
+		<Field ReferenceName="System.CreatedDate" Name="Created Date" Type="DateTime">
+			<Value>12/28/2007 7:35:58 AM</Value>
+		</Field>
+		<Field ReferenceName="System.AuthorizedAs" Name="Authorized As" Type="String">
+			<Value>Administrator</Value>
+		</Field>
+		<Field ReferenceName="System.Rev" Name="Rev" Type="Integer">
+			<Value>1</Value>
+		</Field>
+		<Field ReferenceName="System.TeamProject" Name="Team Project" Type="TreeNode">
+			<Value>Library Information System</Value>
+		</Field>
+		<Field ReferenceName="Microsoft.VSTS.Common.Issue" Name="Issue" Type="String">
+			<Value>No</Value>
+		</Field>
+		<Field ReferenceName="Microsoft.VSTS.Common.StateChangeDate" Name="State Change Date" Type="DateTime">
+			<Value>12/28/2007 7:35:58 AM</Value>
+		</Field>
+		<Field ReferenceName="Microsoft.VSTS.Common.ActivatedDate" Name="Activated Date" Type="DateTime">
+			<Value>12/28/2007 7:35:58 AM</Value>
+		</Field>
+		<Field ReferenceName="Microsoft.VSTS.Common.ActivatedBy" Name="Activated By" Type="String">
+			<Value>Administrator</Value>
+		</Field>
+		<Field ReferenceName="Microsoft.VSTS.Common.Priority" Name="Priority" Type="Integer">
+			<Value>2</Value>
+		</Field>
+		<Field ReferenceName="Microsoft.VSTS.Common.Triage" Name="Triage" Type="String">
+			<Value>Investigate</Value>
+		</Field>
+	</RevisionFields>
+	<Description>
+		<Text>This is a sample bug that I\'ve entered</Text>
+	</Description>
+	<Discussion />
+	<References>
+		<RelatedLinks />
+		<HyperLinks />
+		<ExternalLinks />
+		<Attachments />
+	</References>
+</WorkItem>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Package Product="http://your_server:8080/WorkItemTracking/v1.0/ClientService.asmx" DisableNotifications="True" xmlns="">
+  <InsertWorkItem ObjectType="WorkItem" BypassRules="True">
+    <ComputedColumns>
+      <ComputedColumn Column="System.RevisedDate" />
+    </ComputedColumns>
+    <Columns>
+      <Column Column="System.WorkItemType">
+        <Value>Bug</Value>
+      </Column>
+      <Column Column="System.Rev">
+        <Value>5</Value>
+      </Column>
+      <Column Column="System.AreaId">
+        <Value>40</Value>
+      </Column>
+      <Column Column="System.CreatedBy" Type="String"/>
+    </Columns>
+    <InsertText FieldName="Microsoft.VSTS.CMMI.Analysis" FieldDisplayName="Analysis">text goes here </InsertText>
+  </InsertWorkItem>
+</Package>
+
+
+    <InsertWorkItem ObjectType='WorkItem' BypassRules='1'>
+        <Columns>
+            <Column Column='System.AreaId' Type='Number'><Value>1</Value></Column>
+            <Column Column='System.IterationId' Type='Number'><Value>1</Value></Column>
+            <Column Column='System.WorkItemType' Type='String'><Value>Bug</Value></Column>
+            <Column Column='System.Title' Type='String'><Value>SpiraTest Imported bug</Value></Column>
+            <Column Column='System.State' Type='String'><Value>Active</Value></Column>
+            <Column Column='System.Reason' Type='String'><Value>New</Value></Column>
+            <Column Column='System.ChangedDate' Type='ServerDateTime'></Column>
+            <Column Column='System.CreatedDate' Type='ServerDateTime'></Column>
+            <Column Column='System.CreatedBy' Type='String'><Value>Administrator</Value></Column>
+            <Column Column='System.ChangedBy' Type='String'><Value>Administrator</Value></Column>            
+        </Columns>
+	</InsertWorkItem>
+	
+	<InsertWorkItem ID="206" Number="0" Revision="1"><ComputedColumns /></InsertWorkItem>

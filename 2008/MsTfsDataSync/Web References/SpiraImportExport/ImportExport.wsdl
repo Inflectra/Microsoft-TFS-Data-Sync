@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.inflectra.com/SpiraTest/Services/v2.2/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.inflectra.com/SpiraTest/Services/v2.2/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Enables the import and export of data to/from the system</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.inflectra.com/SpiraTest/Services/v2.2/">
+      <s:element name="Project_Retrieve">
+        <s:complexType />
+      </s:element>
+      <s:element name="Project_RetrieveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Project_RetrieveResult" type="tns:ArrayOfRemoteProject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteProject" nillable="true" type="tns:RemoteProject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteProject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkingHours" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkingDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NonWorkingHours" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Incident_RetrieveNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="creationDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_RetrieveNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Incident_RetrieveNewResult" type="tns:ArrayOfRemoteIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteIncident">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteIncident" nillable="true" type="tns:RemoteIncident" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteIncident">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RemoteArtifact">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IncidentId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProjectId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriorityId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SeverityId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IncidentStatusId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IncidentTypeId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OpenerId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OwnerId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TestRunStepId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DetectedReleaseId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ResolvedReleaseId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="VerifiedReleaseId" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="ClosedDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompletionPercent" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="EstimatedEffort" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ActualEffort" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="PriorityName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SeverityName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IncidentStatusName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IncidentTypeName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OpenerName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OwnerName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProjectName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DetectedReleaseVersionNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ResolvedReleaseVersionNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="VerifiedReleaseVersionNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IncidentStatusOpenStatus" nillable="true" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RemoteArtifact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Text01" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text02" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text03" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text04" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text05" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text06" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text07" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text08" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text09" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text10" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="List01" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List02" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List03" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List04" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List05" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List06" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List07" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List08" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List09" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="List10" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Incident_RetrieveResolutions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="incidentId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_RetrieveResolutionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Incident_RetrieveResolutionsResult" type="tns:ArrayOfRemoteIncidentResolution" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteIncidentResolution">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteIncidentResolution" nillable="true" type="tns:RemoteIncidentResolution" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteIncidentResolution">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IncidentResolutionId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncidentId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatorId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Resolution" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatorName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Incident_AddResolutions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteIncidentResolutions" type="tns:ArrayOfRemoteIncidentResolution" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_AddResolutionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Incident_AddResolutionsResult" type="tns:ArrayOfRemoteIncidentResolution" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_RetrieveById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="incidentId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_RetrieveByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Incident_RetrieveByIdResult" type="tns:RemoteIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteIncident" type="tns:RemoteIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_UpdateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Incident_Create">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteIncident" type="tns:RemoteIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Incident_CreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Incident_CreateResult" type="tns:RemoteIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release_Retrieve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="activeOnly" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release_RetrieveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Release_RetrieveResult" type="tns:ArrayOfRemoteRelease" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteRelease">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteRelease" nillable="true" type="tns:RemoteRelease" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteRelease">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RemoteArtifact">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ReleaseId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreatorId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProjectId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="VersionNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Summary" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Iteration" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="ResourceCount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DaysNonWorking" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PlannedEffort" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="AvailableEffort" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaskEstimatedEffort" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaskActualEffort" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaskCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreatorName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="Release_RetrieveById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="releaseId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release_RetrieveByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Release_RetrieveByIdResult" type="tns:RemoteRelease" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteRelease" type="tns:RemoteRelease" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release_UpdateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Release_Create">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteRelease" type="tns:RemoteRelease" />
+            <s:element minOccurs="1" maxOccurs="1" name="parentReleaseId" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release_CreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Release_CreateResult" type="tns:RemoteRelease" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_RetrieveNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="creationDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_RetrieveNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Task_RetrieveNewResult" type="tns:ArrayOfRemoteTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteTask">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteTask" nillable="true" type="tns:RemoteTask" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteTask">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RemoteArtifact">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TaskId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaskStatusId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProjectId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RequirementId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReleaseId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OwnerId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TaskPriorityId" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompletionPercent" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="EstimatedEffort" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ActualEffort" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TaskStatusName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OwnerName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TaskPriorityName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProjectName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReleaseVersionNumber" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="Task_RetrieveById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="taskId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_RetrieveByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Task_RetrieveByIdResult" type="tns:RemoteTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteTask" type="tns:RemoteTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_UpdateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Task_Create">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remoteTask" type="tns:RemoteTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_CreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Task_CreateResult" type="tns:RemoteTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveFieldValueMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="artifactFieldId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveFieldValueMappingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataMapping_RetrieveFieldValueMappingsResult" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteDataMapping">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteDataMapping" nillable="true" type="tns:RemoteDataMapping" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteDataMapping">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InternalId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Primary" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DataMapping_RetrieveCustomPropertyMapping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="artifactTypeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="customPropertyId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveCustomPropertyMappingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataMapping_RetrieveCustomPropertyMappingResult" type="tns:RemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveCustomPropertyValueMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="artifactTypeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="customPropertyId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveCustomPropertyValueMappingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataMapping_RetrieveCustomPropertyValueMappingsResult" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveProjectMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveProjectMappingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataMapping_RetrieveProjectMappingsResult" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveUserMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveUserMappingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataMapping_RetrieveUserMappingsResult" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_AddUserMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remoteDataMappings" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_AddUserMappingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DataMapping_RetrieveArtifactMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="artifactTypeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RetrieveArtifactMappingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataMapping_RetrieveArtifactMappingsResult" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_AddArtifactMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="artifactTypeId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remoteDataMappings" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_AddArtifactMappingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DataMapping_RemoveArtifactMappings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSyncSystemId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="artifactTypeId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remoteDataMappings" type="tns:ArrayOfRemoteDataMapping" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataMapping_RemoveArtifactMappingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CustomProperty_RetrieveProjectProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="artifactTypeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CustomProperty_RetrieveProjectPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomProperty_RetrieveProjectPropertiesResult" type="tns:ArrayOfRemoteCustomProperty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteCustomProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteCustomProperty" nillable="true" type="tns:RemoteCustomProperty" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteCustomProperty">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CustomPropertyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArtifactTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomPropertyListId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomPropertyName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomPropertyTypeId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomPropertyTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="System_GetServerDateTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="System_GetServerDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="System_GetServerDateTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="System_GetWebServerUrl">
+        <s:complexType />
+      </s:element>
+      <s:element name="System_GetWebServerUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="System_GetWebServerUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="System_GetProductName">
+        <s:complexType />
+      </s:element>
+      <s:element name="System_GetProductNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="System_GetProductNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Connection_Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Connection_AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Connection_AuthenticateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Connection_Disconnect">
+        <s:complexType />
+      </s:element>
+      <s:element name="Connection_DisconnectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Connection_ConnectToProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Connection_ConnectToProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Connection_ConnectToProjectResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Project_RetrieveSoapIn">
+    <wsdl:part name="parameters" element="tns:Project_Retrieve" />
+  </wsdl:message>
+  <wsdl:message name="Project_RetrieveSoapOut">
+    <wsdl:part name="parameters" element="tns:Project_RetrieveResponse" />
+  </wsdl:message>
+  <wsdl:message name="Incident_RetrieveNewSoapIn">
+    <wsdl:part name="parameters" element="tns:Incident_RetrieveNew" />
+  </wsdl:message>
+  <wsdl:message name="Incident_RetrieveNewSoapOut">
+    <wsdl:part name="parameters" element="tns:Incident_RetrieveNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="Incident_RetrieveResolutionsSoapIn">
+    <wsdl:part name="parameters" element="tns:Incident_RetrieveResolutions" />
+  </wsdl:message>
+  <wsdl:message name="Incident_RetrieveResolutionsSoapOut">
+    <wsdl:part name="parameters" element="tns:Incident_RetrieveResolutionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Incident_AddResolutionsSoapIn">
+    <wsdl:part name="parameters" element="tns:Incident_AddResolutions" />
+  </wsdl:message>
+  <wsdl:message name="Incident_AddResolutionsSoapOut">
+    <wsdl:part name="parameters" element="tns:Incident_AddResolutionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Incident_RetrieveByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:Incident_RetrieveById" />
+  </wsdl:message>
+  <wsdl:message name="Incident_RetrieveByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:Incident_RetrieveByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="Incident_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Incident_Update" />
+  </wsdl:message>
+  <wsdl:message name="Incident_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:Incident_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Incident_CreateSoapIn">
+    <wsdl:part name="parameters" element="tns:Incident_Create" />
+  </wsdl:message>
+  <wsdl:message name="Incident_CreateSoapOut">
+    <wsdl:part name="parameters" element="tns:Incident_CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Release_RetrieveSoapIn">
+    <wsdl:part name="parameters" element="tns:Release_Retrieve" />
+  </wsdl:message>
+  <wsdl:message name="Release_RetrieveSoapOut">
+    <wsdl:part name="parameters" element="tns:Release_RetrieveResponse" />
+  </wsdl:message>
+  <wsdl:message name="Release_RetrieveByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:Release_RetrieveById" />
+  </wsdl:message>
+  <wsdl:message name="Release_RetrieveByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:Release_RetrieveByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="Release_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Release_Update" />
+  </wsdl:message>
+  <wsdl:message name="Release_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:Release_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Release_CreateSoapIn">
+    <wsdl:part name="parameters" element="tns:Release_Create" />
+  </wsdl:message>
+  <wsdl:message name="Release_CreateSoapOut">
+    <wsdl:part name="parameters" element="tns:Release_CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_RetrieveNewSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_RetrieveNew" />
+  </wsdl:message>
+  <wsdl:message name="Task_RetrieveNewSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_RetrieveNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_RetrieveByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_RetrieveById" />
+  </wsdl:message>
+  <wsdl:message name="Task_RetrieveByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_RetrieveByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_Update" />
+  </wsdl:message>
+  <wsdl:message name="Task_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_CreateSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_Create" />
+  </wsdl:message>
+  <wsdl:message name="Task_CreateSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveFieldValueMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveFieldValueMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveFieldValueMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveFieldValueMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveCustomPropertyMappingSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveCustomPropertyMapping" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveCustomPropertyMappingSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveCustomPropertyMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveCustomPropertyValueMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveCustomPropertyValueMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveCustomPropertyValueMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveCustomPropertyValueMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveProjectMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveProjectMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveProjectMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveProjectMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveUserMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveUserMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveUserMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveUserMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_AddUserMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_AddUserMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_AddUserMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_AddUserMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveArtifactMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveArtifactMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RetrieveArtifactMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RetrieveArtifactMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_AddArtifactMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_AddArtifactMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_AddArtifactMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_AddArtifactMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RemoveArtifactMappingsSoapIn">
+    <wsdl:part name="parameters" element="tns:DataMapping_RemoveArtifactMappings" />
+  </wsdl:message>
+  <wsdl:message name="DataMapping_RemoveArtifactMappingsSoapOut">
+    <wsdl:part name="parameters" element="tns:DataMapping_RemoveArtifactMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomProperty_RetrieveProjectPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:CustomProperty_RetrieveProjectProperties" />
+  </wsdl:message>
+  <wsdl:message name="CustomProperty_RetrieveProjectPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:CustomProperty_RetrieveProjectPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="System_GetServerDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:System_GetServerDateTime" />
+  </wsdl:message>
+  <wsdl:message name="System_GetServerDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:System_GetServerDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="System_GetWebServerUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:System_GetWebServerUrl" />
+  </wsdl:message>
+  <wsdl:message name="System_GetWebServerUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:System_GetWebServerUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="System_GetProductNameSoapIn">
+    <wsdl:part name="parameters" element="tns:System_GetProductName" />
+  </wsdl:message>
+  <wsdl:message name="System_GetProductNameSoapOut">
+    <wsdl:part name="parameters" element="tns:System_GetProductNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="Connection_AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:Connection_Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="Connection_AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:Connection_AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Connection_DisconnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Connection_Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="Connection_DisconnectSoapOut">
+    <wsdl:part name="parameters" element="tns:Connection_DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="Connection_ConnectToProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:Connection_ConnectToProject" />
+  </wsdl:message>
+  <wsdl:message name="Connection_ConnectToProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:Connection_ConnectToProjectResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ImportExportSoap">
+    <wsdl:operation name="Project_Retrieve">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of projects that the passed in user has access to</wsdl:documentation>
+      <wsdl:input message="tns:Project_RetrieveSoapIn" />
+      <wsdl:output message="tns:Project_RetrieveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveNew">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves all new incidents added in the system since the date specified</wsdl:documentation>
+      <wsdl:input message="tns:Incident_RetrieveNewSoapIn" />
+      <wsdl:output message="tns:Incident_RetrieveNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveResolutions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the incident resolutions for an incident</wsdl:documentation>
+      <wsdl:input message="tns:Incident_RetrieveResolutionsSoapIn" />
+      <wsdl:output message="tns:Incident_RetrieveResolutionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Incident_AddResolutions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds new incident resolutions to incidents in the system</wsdl:documentation>
+      <wsdl:input message="tns:Incident_AddResolutionsSoapIn" />
+      <wsdl:output message="tns:Incident_AddResolutionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a single incident in the system</wsdl:documentation>
+      <wsdl:input message="tns:Incident_RetrieveByIdSoapIn" />
+      <wsdl:output message="tns:Incident_RetrieveByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Incident_Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a single incident in the system</wsdl:documentation>
+      <wsdl:input message="tns:Incident_UpdateSoapIn" />
+      <wsdl:output message="tns:Incident_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Incident_Create">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new incident in the system</wsdl:documentation>
+      <wsdl:input message="tns:Incident_CreateSoapIn" />
+      <wsdl:output message="tns:Incident_CreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Release_Retrieve">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves all the releases and iterations belonging to the current project</wsdl:documentation>
+      <wsdl:input message="tns:Release_RetrieveSoapIn" />
+      <wsdl:output message="tns:Release_RetrieveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Release_RetrieveById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a single release in the system</wsdl:documentation>
+      <wsdl:input message="tns:Release_RetrieveByIdSoapIn" />
+      <wsdl:output message="tns:Release_RetrieveByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Release_Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a single release in the system</wsdl:documentation>
+      <wsdl:input message="tns:Release_UpdateSoapIn" />
+      <wsdl:output message="tns:Release_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Release_Create">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new release in the system</wsdl:documentation>
+      <wsdl:input message="tns:Release_CreateSoapIn" />
+      <wsdl:output message="tns:Release_CreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_RetrieveNew">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves all new tasks added in the system since the date specified</wsdl:documentation>
+      <wsdl:input message="tns:Task_RetrieveNewSoapIn" />
+      <wsdl:output message="tns:Task_RetrieveNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_RetrieveById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a single task in the system</wsdl:documentation>
+      <wsdl:input message="tns:Task_RetrieveByIdSoapIn" />
+      <wsdl:output message="tns:Task_RetrieveByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a single task in the system</wsdl:documentation>
+      <wsdl:input message="tns:Task_UpdateSoapIn" />
+      <wsdl:output message="tns:Task_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_Create">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new task in the system</wsdl:documentation>
+      <wsdl:input message="tns:Task_CreateSoapIn" />
+      <wsdl:output message="tns:Task_CreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveFieldValueMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of data mappings for artifact field values</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RetrieveFieldValueMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_RetrieveFieldValueMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveCustomPropertyMapping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the data mapping for a custom property</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RetrieveCustomPropertyMappingSoapIn" />
+      <wsdl:output message="tns:DataMapping_RetrieveCustomPropertyMappingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveCustomPropertyValueMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of data mappings for custom property values</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RetrieveCustomPropertyValueMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_RetrieveCustomPropertyValueMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveProjectMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of data mappings for projects in the system</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RetrieveProjectMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_RetrieveProjectMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveUserMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of data mappings for users in the system</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RetrieveUserMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_RetrieveUserMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_AddUserMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds new user data mapping entries</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_AddUserMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_AddUserMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveArtifactMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves a list of data mappings for artifact ids in the system</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RetrieveArtifactMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_RetrieveArtifactMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_AddArtifactMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds new artifact data mapping entries</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_AddArtifactMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_AddArtifactMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RemoveArtifactMappings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes existing artifact data mapping entries</wsdl:documentation>
+      <wsdl:input message="tns:DataMapping_RemoveArtifactMappingsSoapIn" />
+      <wsdl:output message="tns:DataMapping_RemoveArtifactMappingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomProperty_RetrieveProjectProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the list of custom properties configure for the current project</wsdl:documentation>
+      <wsdl:input message="tns:CustomProperty_RetrieveProjectPropertiesSoapIn" />
+      <wsdl:output message="tns:CustomProperty_RetrieveProjectPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="System_GetServerDateTime">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the current date-time on the server</wsdl:documentation>
+      <wsdl:input message="tns:System_GetServerDateTimeSoapIn" />
+      <wsdl:output message="tns:System_GetServerDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="System_GetWebServerUrl">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the base URL of the website that the system is running under. Used for notifications and exported artifacts</wsdl:documentation>
+      <wsdl:input message="tns:System_GetWebServerUrlSoapIn" />
+      <wsdl:output message="tns:System_GetWebServerUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="System_GetProductName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the brand name of the product installed</wsdl:documentation>
+      <wsdl:input message="tns:System_GetProductNameSoapIn" />
+      <wsdl:output message="tns:System_GetProductNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Connection_Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticates against the server. Need to call before using other methods</wsdl:documentation>
+      <wsdl:input message="tns:Connection_AuthenticateSoapIn" />
+      <wsdl:output message="tns:Connection_AuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Connection_Disconnect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Disconnects the currenly authenticated / authorized user</wsdl:documentation>
+      <wsdl:input message="tns:Connection_DisconnectSoapIn" />
+      <wsdl:output message="tns:Connection_DisconnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Connection_ConnectToProject">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Connects to a project, needed before calling any project-specific methods</wsdl:documentation>
+      <wsdl:input message="tns:Connection_ConnectToProjectSoapIn" />
+      <wsdl:output message="tns:Connection_ConnectToProjectSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ImportExportSoap" type="tns:ImportExportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Project_Retrieve">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Project_Retrieve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveNew">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_RetrieveNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveResolutions">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_RetrieveResolutions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_AddResolutions">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_AddResolutions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveById">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_RetrieveById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_Update">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_Create">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_Retrieve">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_Retrieve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_RetrieveById">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_RetrieveById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_Update">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_Create">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_RetrieveNew">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_RetrieveNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_RetrieveById">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_RetrieveById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_Update">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_Create">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveFieldValueMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveFieldValueMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveCustomPropertyMapping">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveCustomPropertyMapping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveCustomPropertyValueMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveCustomPropertyValueMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveProjectMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveProjectMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveUserMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveUserMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_AddUserMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_AddUserMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveArtifactMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveArtifactMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_AddArtifactMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_AddArtifactMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RemoveArtifactMappings">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RemoveArtifactMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomProperty_RetrieveProjectProperties">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/CustomProperty_RetrieveProjectProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="System_GetServerDateTime">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/System_GetServerDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="System_GetWebServerUrl">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/System_GetWebServerUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="System_GetProductName">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/System_GetProductName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connection_Authenticate">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Connection_Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connection_Disconnect">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Connection_Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connection_ConnectToProject">
+      <soap:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Connection_ConnectToProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ImportExportSoap12" type="tns:ImportExportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Project_Retrieve">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Project_Retrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveNew">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_RetrieveNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveResolutions">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_RetrieveResolutions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_AddResolutions">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_AddResolutions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_RetrieveById">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_RetrieveById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_Update">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Incident_Create">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Incident_Create" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_Retrieve">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_Retrieve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_RetrieveById">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_RetrieveById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_Update">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Release_Create">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Release_Create" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_RetrieveNew">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_RetrieveNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_RetrieveById">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_RetrieveById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_Update">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_Create">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Task_Create" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveFieldValueMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveFieldValueMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveCustomPropertyMapping">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveCustomPropertyMapping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveCustomPropertyValueMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveCustomPropertyValueMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveProjectMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveProjectMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveUserMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveUserMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_AddUserMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_AddUserMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RetrieveArtifactMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RetrieveArtifactMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_AddArtifactMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_AddArtifactMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataMapping_RemoveArtifactMappings">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/DataMapping_RemoveArtifactMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomProperty_RetrieveProjectProperties">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/CustomProperty_RetrieveProjectProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="System_GetServerDateTime">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/System_GetServerDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="System_GetWebServerUrl">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/System_GetWebServerUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="System_GetProductName">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/System_GetProductName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connection_Authenticate">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Connection_Authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connection_Disconnect">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Connection_Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connection_ConnectToProject">
+      <soap12:operation soapAction="http://www.inflectra.com/SpiraTest/Services/v2.2/Connection_ConnectToProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImportExport">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Enables the import and export of data to/from the system</wsdl:documentation>
+    <wsdl:port name="ImportExportSoap" binding="tns:ImportExportSoap">
+      <soap:address location="http://localhost/SpiraTest/Services/v2_2/ImportExport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ImportExportSoap12" binding="tns:ImportExportSoap12">
+      <soap12:address location="http://localhost/SpiraTest/Services/v2_2/ImportExport.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

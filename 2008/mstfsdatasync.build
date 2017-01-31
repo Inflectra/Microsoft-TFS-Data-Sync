@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<project name="MsTfs DataSync" default="zipup">
+	<target name="zipup" description="Zips up the whole application for deployment">
+		<echo message="Zipping up entire application" />
+		<zip zipfile="MsTfs2008DataSync.zip" verbose="true" comment="MsTfs Plug-In for SpiraTeam">
+			<fileset basedir="MsTfsDataSync/bin/Release">
+				<include name="MsTfsDataSync.dll" />
+			</fileset>
+			<fileset basedir="assembly">
+				<include name="*.dll" />
+			</fileset>
+			<fileset basedir="MsTfsDataSync">
+				<include name="*.txt" />
+			</fileset>
+		</zip>
+	</target>	
+</project>

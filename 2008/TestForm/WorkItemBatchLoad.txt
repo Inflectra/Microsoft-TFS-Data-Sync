@@ -1,0 +1,64 @@
+declare @P11 as nvarchar(255)
+set @P11 = 'S-1-5-21-1108222702-4062397201-2426503605-500'
+declare @P12 as nvarchar(255)
+set @P12 = 'AQUAAAAAAAUVAAAA7iIOQhFDI/K1gaGQ9AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
+declare @P13 as nvarchar(255)
+set @P13 = 'WorkItem'
+declare @P14 as nvarchar(255)
+set @P14 = '1'
+declare @P15 as nvarchar(255)
+set @P15 = 'Bug'
+declare @P16 as nvarchar(255)
+set @P16 = 'SpiraTest Imported bug'
+declare @P17 as nvarchar(255)
+set @P17 = 'Active'
+declare @P18 as nvarchar(255)
+set @P18 = 'New'
+declare @P19 as nvarchar(255)
+set @P19 = 'Administrator'
+declare @P20 as nvarchar(255)
+set @P20 = 'Administrator'
+declare @P21 as nvarchar(255)
+set @P21 = 'Administrator'
+declare @P22 as nvarchar(4000)
+set @P22 = '''System.Id'',''System.AreaPath'',''System.Title'',''System.State'',''System.Reason'',''System.Rev'',''System.AssignedTo'',''System.WorkItemType'',''System.ChangedBy'',''System.ChangedDate'',''System.CreatedBy'',''System.CreatedDate'',''System.AreaId'',''System.AuthorizedAs'',''System.IterationPath'',''System.RevisedDate'''
+
+declare @CheckBackend as int exec @CheckBackend = dbo.CheckBackendUserMode  if @CheckBackend <> 0 return
+select DbStamp from Dbo.GetDbStamp
+declare @fRollback as bit; set @fRollback=0;
+declare @ForceRollbackError as int; set @ForceRollbackError=0;
+declare @fVerbose as bit; set @fVerbose=0;
+declare @NowUtc as datetime; set @NowUtc=getutcdate()
+select @NowUtc
+declare @projectId as int;
+set @projectId=dbo.GetProjectID(1);
+if @projectId is null begin raiserror (600150,11,1) with seterror, nowait; return; end; 
+select  [CSSNodeId] from dbo.TreeNodes where [ID]=1
+
+select [Name],[CSSNodeId] from dbo.TreeNodes where [ID]=@projectId and [TypeID]=-42
+declare @PersonId as int
+declare @rebuildOK as int
+declare @PersonName as nvarchar(255)declare @userSid as nvarchar(256)
+set @userSid=@P11
+declare @encodedSid as nvarchar(92)
+set @encodedSid=@P12
+exec @rebuildOK=dbo.RebuildCallersViews @PersonId output,@P13,0,0,@fVerbose,@projectId,@P11,@P12
+if @rebuildOK<>0 return
+
+select @PersonName = DisplayPart from dbo.Constants where SID = @P11
+declare @bulkUpdateIdList as nvarchar(4000); set @bulkUpdateIdList='';declare @missingOrUpdatedIdList as nvarchar(4000);set @missingOrUpdatedIdList='';
+set xact_abort on;set implicit_transactions off;set transaction isolation level serializable;begin transaction
+declare @O1 as int; insert into dbo.[WorkItemsInsert] ([System.PersonId],[System.ChangedDate],[System.AreaId],[System.WorkItemType],[System.Title],[System.State],[System.Reason],[System.AssignedTo],[System.CreatedBy],[System.ChangedBy]) values (@PersonId,@NowUtc,@P14,@P15,@P16,@P17,@P18,@P19,@P20,@P21)
+set @O1=scope_identity(); select @O1
+set @bulkUpdateIdList=isnull(@bulkUpdateIdList,'')+cast(@O1 as nvarchar) + ';'
+exec dbo.[WorkItemAuthorizeChanges] @PersonId,@encodedSid,@NowUtc,@fVerbose,@fRollback output,0,@O1,@projectId
+if (@fRollback = 1)
+begin 
+ exec dbo.GetForceRollbackErrorCode @PersonId,@NowUtc,@ForceRollbackError output
+end
+exec dbo.ForceRollback @fRollback, @ForceRollbackError
+if @@trancount=0 return
+exec dbo.[WorkItemApplyChanges] @PersonId,@NowUtc,@O1
+set transaction isolation level read committed;commit transaction
+exec dbo.[WorkItemGetComputedColumns] @encodedSid,@O1,@NowUtc,@P22,default,1,null
+set nocount off
